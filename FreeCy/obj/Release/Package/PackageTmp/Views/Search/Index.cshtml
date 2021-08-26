@@ -1,0 +1,105 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+@using Models.Framework;
+@model List<Product>
+@if (null != TempData["alertMessage"])
+{
+    <script type="text/javascript">
+       alert("@TempData["alertMessage"]");
+    </script>
+}
+<section class="bg-half page-next-level">
+
+    <div class="bg-overlay" style="background: url('') center center;
+        background-image: url('../../assets2/images/login-bg.png');
+"></div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="text-center text-white">
+                    <h4 class="text-uppercase title mb-4">Result Searching</h4>
+                    <ul class="page-next d-inline-block mb-0">
+                        <li>
+                            <a href="/Home/Index" class="text-uppercase font-weight-bold">Home</a>
+                        </li>
+                        <li>
+                            <a href="/Home/ListProduct" class="text-uppercase font-weight-bold">Jobs List</a>
+                        </li>
+                        <li>
+                            <span class="text-uppercase text-white font-weight-bold">Result Searching</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end home -->
+<div class="col-12 mt-3">
+    <div class="custom-form p-4 border rounded">
+        @*<img src=""
+            class="img-fluid avatar avatar-medium d-block mx-auto rounded-pill" alt="">*@
+        <form class="text-success mb-0 rounded">
+            <h4 class="text-center">SEARCH RESULT</h4>
+        </form>
+        <form>
+
+            @foreach (var item in Model)
+            {
+                <h4 class="text-center"></h4>
+                <div class="col-lg-12 mt-4 pt-2">
+                    <div class="job-list-box border rounded">
+                        <div class="p-3">
+                            <div class="row align-items-center">
+                                <div class="col-lg-2">
+                                    <div class="company-logo-img">
+                                        <img src="~/assets2/images/featured-job/@item.Image" alt=""
+                                             class="img-fluid mx-auto d-block" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-7 col-md-9">
+                                    <div class="job-list-desc">
+                                        <h6 class="mb-2">
+                                            <a href="#" class="text-dark">@item.Name</a>
+                                        </h6>
+                                        <p class="text-muted mb-0">
+                                            <i class="mdi mdi-bank mr-2"></i>Web
+                                            Themescode.pvt.Ltd
+                                        </p>
+                                        <ul class="list-inline mb-0">
+                                            <li class="list-inline-item mr-3">
+                                                <p class="text-muted mb-0">
+                                                    <i class="mdi mdi-map-marker mr-2"></i>@item.User.Address
+                                                </p>
+                                            </li>
+
+                                            <li class="list-inline-item">
+                                                <p class="text-muted mb-0">
+                                                    <i class="mdi mdi-clock-outline mr-2"></i>@item.CreatedAt
+                                                </p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3">
+                                    <div class="job-list-button-sm text-right">
+                                        <span class="badge badge-success">@item.User.WorkTime</span>
+
+                                        <div class="mt-3">
+                                            <a href="#" class="btn btn-sm btn-primary">Apply</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </form>
+    </div>
+</div>
+
+

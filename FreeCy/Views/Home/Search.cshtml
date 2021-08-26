@@ -1,0 +1,68 @@
+﻿@model List<Models.Framework.ProductViewModel>
+@{
+    ViewBag.Title = "Search Result";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+<!-- Start home -->
+<section class="bg-half page-next-level">
+    <div class="bg-overlay" style="        background: url('') center center;
+        @{var link = "/Home/ListProduct2"; }
+        background-image: url('../../assets2/images/job-detail.png');
+"></div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="text-center text-white">
+                    <h4 class="text-uppercase title mb-4">Employers List</h4>
+                    <ul class="page-next d-inline-block mb-0">
+                        <li><a href="/Home/Index" class="text-uppercase font-weight-bold">Home</a></li>
+
+                        <li>
+                            <span class="text-uppercase text-white font-weight-bold">Search Result</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<h2>Search</h2>
+<div class="content">
+    <div class="content_top">
+        <div class="heading">
+            <h3>Kết quả tìm kiếm theo từ khoá: @ViewBag.Keyword</h3>
+        </div>
+        <div class="see">
+
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="section group">
+        @if (Model.Count > 0)
+        {
+            foreach (var item in Model)
+            {
+                //var link = "/chi-tiet/" + item.MetaTitle + "-" + item.ID;
+                <div class="grid_1_of_4 images_1_of_4">
+                    <a href="#"><img src="@item.Image" alt="" /></a>
+                    <h2>@item.Name</h2>
+                    @*<span>@item.CateName</span>*@
+                    <div class="price-details">
+                        <div class="price-number">
+                            <p><span class="rupees">@(item.Price.HasValue ? item.Price.Value.ToString("N0") : "Liên hệ")</span></p>
+                        </div>
+                        @*<div class="add-cart">
+                            <h4><a href="/gio-hang/@item.ID">Thêm vào giỏ</a></h4>
+                        </div>*@
+                        <div class="clear"></div>
+                    </div>
+
+                </div>
+            }
+            <div class="clear"></div>
+
+        }
+        
+    </div>
+</div>

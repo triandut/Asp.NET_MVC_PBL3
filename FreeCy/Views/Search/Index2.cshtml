@@ -1,0 +1,98 @@
+﻿
+@{
+    ViewBag.Title = "Index2";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+@using Models.Framework;
+@model List<User>
+<section class="bg-half page-next-level">
+    <div class="bg-overlay" style="      background: url('') center center;
+        background-image: url('../../assets2/images/job-detail.png');
+    "></div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="text-center text-white">
+                    <h4 class="text-uppercase title mb-4">Result Searching</h4>
+                    <ul class="page-next d-inline-block mb-0">
+                        <li>
+                            <a href="/Home/Index" class="text-uppercase font-weight-bold">Home</a>
+                        </li>
+                        <li>
+                            <a href="/Home/ListProduct" class="text-uppercase font-weight-bold">Jobs List</a>
+                        </li>
+                        <li>
+                            <span class="text-uppercase text-white font-weight-bold">Result Searching</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="col-12 mt-3">
+    <div class="custom-form p-4 border rounded">
+        @*<img src=""
+            class="img-fluid avatar avatar-medium d-block mx-auto rounded-pill" alt="">*@
+        <form class="text-success mb-0 rounded">
+           
+            <h4 class="text-center">SEARCH RESULT</h4>
+        </form>
+        <form>
+
+            @foreach (var item in Model)
+            {<h4 class="text-center">@ViewBag.Thongbao</h4>
+            <div class="col-lg-4 col-md-6 mt-4 pt-2">
+                <div class="employers-list position-relative pb-3 pt-3 pl-2 pr-2 border rounded">
+                    <img src="~/assets2/images/profile/@item.Image"
+                         alt="" class="mx-auto d-block shadow border rounded-circle" height="90">
+                    <div class="grid-list-desc text-center mt-3">
+                        <h5 class="mb-2"><a href="#" class="text-dark name">@item.UserName</a></h5>
+                        <p class="text-muted mb-0">@item.Skill</p>
+                        <p class="text-muted mb-0">
+                            <i class="mdi mdi-map-marker mr-2"></i>@item.Address
+                        </p>
+                        <ul class="employers-icons list-inline mb-1">
+                            <li class="list-inline-item">
+                                <a href="#" class="text-success">
+                                    <i class="mdi mdi-star"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#" class="text-success">
+                                    <i class="mdi mdi-star"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#" class="text-success">
+                                    <i class="mdi mdi-star"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#" class="text-success">
+                                    <i class="mdi mdi-star"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#" class="text-success">
+                                    <i class="mdi mdi-star"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item badge badge-success text-white">4.9</li>
+                        </ul>
+                    </div>
+                    <div class="apply-button text-center mt-3">
+                        <a href="/User/ViewProfileCandidate/@item.ID_User" class="btn btn-primary btn-sm">View Profile</a>
+                    </div>
+                    <div class="fav-collection fav-icon">
+                        <i class="mdi mdi-heart" title="Collect Now"></i>
+                    </div>
+                </div>
+            </div>
+        }
+
+
+        </form>
+        </div>
+    </div>
+            

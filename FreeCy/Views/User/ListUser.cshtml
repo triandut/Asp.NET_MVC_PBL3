@@ -1,0 +1,410 @@
+﻿
+@{
+    ViewBag.Title = "ListUser";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+    var listUsers = (List<Models.Framework.User>)ViewBag.Users;
+}
+
+<!-- Start home -->
+<section class="bg-half page-next-level">
+    <div class="bg-overlay" style="        background: url('') center center;
+        background-image: url('../../assets2/images/login-bg.png');
+"></div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="text-center text-white">
+                    <h4 class="text-uppercase title mb-4">Employers List</h4>
+                    <ul class="page-next d-inline-block mb-0">
+                        <li><a href="/Home/Index" class="text-uppercase font-weight-bold">Home</a></li>
+                    
+                        <li>
+                            <span class="text-uppercase text-white font-weight-bold">Candidates List</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end home -->
+
+<section class="section">
+    <!-- REGISTRATION-FORM START -->
+    <div class="container">
+        <div class="home-form-position">
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <div class="home-registration-form bg-white job-list-grid-reg-form p-4 mb-3">
+
+                        @using (Html.BeginForm("Index2", "Search", FormMethod.Post))
+                        {
+                            <div class="row">
+                                <div class="col-lg-10 col-md-1">
+                                    <div class="registration-form-box">
+                                        <i class="fa fa-briefcase"></i>
+                                        <input type="text" id="exampleInputName1" name="keyword"
+                                               class="form-control rounded registration-input-box"
+                                               placeholder="User keybords..." />
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-1">
+                                    <div class="registration-form-box">
+                                        <input type="submit" id="submit" name="send"
+                                               class="submitBnt btn btn-primary btn-block" value="Submit" />
+                                    </div>
+                                </div>
+                            </div>
+
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- REGISTRATION-FORM END -->
+
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-12">
+                <div class="show-results mt-4">
+                    <div class="float-left">
+                        <h5 class="text-dark mb-0 pt-2">Showing @ViewBag.Size of @ViewBag.Total Results</h5>
+                    </div>
+                    <div class="sort-button float-right">
+                        <ul class="list-inline mb-0">
+                            <li class="list-inline-item mb-0 mr-3">
+
+                            </li>
+
+                            <li class="list-inline-item">
+
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-3 col-md-4 pt-2">
+                <div class="left-sidebar">
+                    <div class="accordion" id="accordionExample">
+                        <div class="card mt-4 rounded border-bottom-0">
+                            <a data-toggle="collapse" href="#collapseOne" class="job-list" aria-expanded="true"
+                               aria-controls="collapseOne">
+                                <div class="card-header" id="headingOne">
+                                    <h6 class="mb-0 text-dark">Last Activity</h6>
+                                </div>
+                            </a>
+                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne">
+                                <div class="card-body p-0">
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" id="customRadio1" name="customRadio"
+                                               class="custom-control-input">
+                                        <label class="custom-control-label ml-1 text-muted" for="customRadio1">
+                                            Last
+                                            Hour
+                                        </label>
+                                    </div>
+
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" id="customRadio2" name="customRadio"
+                                               class="custom-control-input">
+                                        <label class="custom-control-label ml-1 text-muted" for="customRadio2">
+                                            Last
+                                            24 hours
+                                        </label>
+                                    </div>
+
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" id="customRadio3" name="customRadio"
+                                               class="custom-control-input">
+                                        <label class="custom-control-label ml-1 text-muted" for="customRadio3">
+                                            Last
+                                            7 days
+                                        </label>
+                                    </div>
+
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" id="customRadio4" name="customRadio"
+                                               class="custom-control-input">
+                                        <label class="custom-control-label ml-1 text-muted" for="customRadio4">
+                                            Last
+                                            14 days
+                                        </label>
+                                    </div>
+
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" id="customRadio5" name="customRadio"
+                                               class="custom-control-input">
+                                        <label class="custom-control-label ml-1 text-muted" for="customRadio5">
+                                            Last
+                                            30 days
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- collapse one end -->
+                        <div class="card mt-4 rounded border-bottom-0">
+                            <a data-toggle="collapse" href="#collapsetwo" class="job-list" aria-expanded="true"
+                               aria-controls="collapsetwo">
+                                <div class="card-header" id="headingtwo">
+                                    <h6 class="mb-0 text-dark">Team Size</h6>
+                                </div>
+                            </a>
+                            <div id="collapsetwo" class="collapse show" aria-labelledby="headingtwo">
+                                <div class="card-body p-0">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck7">
+                                        <label class="custom-control-label ml-1 text-muted" for="customCheck7">
+                                            1 To
+                                            50
+                                        </label>
+                                    </div>
+
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck8">
+                                        <label class="custom-control-label ml-1 text-muted" for="customCheck8">
+                                            51 To
+                                            100
+                                        </label>
+                                    </div>
+
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck3">
+                                        <label class="custom-control-label ml-1 text-muted" for="customCheck3">
+                                            101
+                                            To 150
+                                        </label>
+                                    </div>
+
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck4">
+                                        <label class="custom-control-label ml-1 text-muted" for="customCheck4">
+                                            151
+                                            To 200
+                                        </label>
+                                    </div>
+
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck5">
+                                        <label class="custom-control-label ml-1 text-muted" for="customCheck5">
+                                            201
+                                            To 250
+                                        </label>
+                                    </div>
+
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck6">
+                                        <label class="custom-control-label ml-1 text-muted" for="customCheck6">
+                                            251
+                                            To 300
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- collapse one end -->
+                        <div class="card mt-4 rounded border-bottom-0">
+                            <a data-toggle="collapse" href="#collapsethree" class="job-list" aria-expanded="true"
+                               aria-controls="collapsethree">
+                                <div class="card-header" id="headingthree">
+                                    <h6 class="mb-0 text-dark">Categories</h6>
+                                </div>
+                            </a>
+                            <div id="collapsethree" class="collapse show" aria-labelledby="headingthree">
+                                <div class="card-body p-0">
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" id="customRadio7" name="customRadio1"
+                                               class="custom-control-input">
+                                        <label class="custom-control-label ml-1 text-muted" for="customRadio7">
+                                            Web
+                                            Designer
+                                        </label>
+                                    </div>
+
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" id="customRadio8" name="customRadio1"
+                                               class="custom-control-input">
+                                        <label class="custom-control-label ml-1 text-muted"
+                                               for="customRadio8">Graphic Designer</label>
+                                    </div>
+
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" id="customRadio9" name="customRadio1"
+                                               class="custom-control-input">
+                                        <label class="custom-control-label ml-1 text-muted" for="customRadio9">
+                                            PHP
+                                            Developer
+                                        </label>
+                                    </div>
+
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" id="customRadio10" name="customRadio1"
+                                               class="custom-control-input">
+                                        <label class="custom-control-label ml-1 text-muted"
+                                               for="customRadio10">UI/UX Designer</label>
+                                    </div>
+
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" id="customRadio11" name="customRadio1"
+                                               class="custom-control-input">
+                                        <label class="custom-control-label ml-1 text-muted"
+                                               for="customRadio11">Banking</label>
+                                    </div>
+
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" id="customRadio12" name="customRadio1"
+                                               class="custom-control-input">
+                                        <label class="custom-control-label ml-1 text-muted"
+                                               for="customRadio12">Accountancy</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card mt-4 rounded border-bottom-0">
+                            <a data-toggle="collapse" href="#collapsefour" class="job-list" aria-expanded="true"
+                               aria-controls="collapsefour">
+                                <div class="card-header" id="headingfour">
+                                    <h6 class="mb-0 text-dark">Gender</h6>
+                                </div>
+                            </a>
+                            <div id="collapsefour" class="collapse show" aria-labelledby="headingfour">
+                                <div class="card-body p-0">
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" id="customRadio13" name="customRadio3"
+                                               class="custom-control-input">
+                                        <label class="custom-control-label ml-1 text-muted"
+                                               for="customRadio13">Male</label>
+                                    </div>
+
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" id="customRadio14" name="customRadio3"
+                                               class="custom-control-input">
+                                        <label class="custom-control-label ml-1 text-muted"
+                                               for="customRadio14">Female</label>
+                                    </div>
+
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" id="customRadio15" name="customRadio3"
+                                               class="custom-control-input">
+                                        <label class="custom-control-label ml-1 text-muted"
+                                               for="customRadio15">Others</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- collapse one end -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-9 col-md-8">
+                <div class="row">
+                    @foreach (var item in listUsers)
+                    {
+                        <div class="col-lg-4 col-md-6 mt-4 pt-2">
+                            <div class="employers-list position-relative pb-3 pt-3 pl-2 pr-2 border rounded">
+                                <img src="~/assets2/images/profile/@item.Image"
+                                     alt="" class="mx-auto d-block shadow border rounded-circle" height="90">
+                                <div class="grid-list-desc text-center mt-3">
+                                    <h5 class="mb-2"><a href="#" class="text-dark name">@item.UserName</a></h5>
+                                    <p class="text-muted mb-0">@item.Skill</p>
+                                    <p class="text-muted mb-0">
+                                        <i class="mdi mdi-map-marker mr-2"></i>@item.Address
+                                    </p>
+                                    <ul class="employers-icons list-inline mb-1">
+                                        <li class="list-inline-item">
+                                            <a href="#" class="text-success">
+                                                <i class="mdi mdi-star"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a href="#" class="text-success">
+                                                <i class="mdi mdi-star"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a href="#" class="text-success">
+                                                <i class="mdi mdi-star"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a href="#" class="text-success">
+                                                <i class="mdi mdi-star"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a href="#" class="text-success">
+                                                <i class="mdi mdi-star"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item badge badge-success text-white">4.9</li>
+                                    </ul>
+                                </div>
+                                <div class="apply-button text-center mt-3">
+                                    <a href="/User/ViewProfileCandidate/@item.ID_User" class="btn btn-primary btn-sm">View Profile</a>
+                                </div>
+                                <div class="fav-collection fav-icon">
+                                    <i class="mdi mdi-heart" title="Collect Now"></i>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    <div class="col-lg-12 mt-4 pt-2">
+
+                        @{var link = "/User/ListUser";}
+                        @if (ViewBag.TotalPage > 1)
+                        {
+                            var pageDisplay = (int)ViewBag.MaxPage;
+                            int totalPage = (int)ViewBag.TotalPage;
+                            int currentPage = ((int)ViewBag.Page);
+
+                            // Create numeric links
+                            var startPageIndex = Math.Max(1, currentPage - pageDisplay / 2);
+                            var endPageIndex = Math.Min(totalPage, currentPage + pageDisplay / 2);
+
+                            <nav>
+                                <ul class="pagination pagination-center mt-5">
+
+                                    @if (currentPage > ViewBag.First)
+                                    {
+                                        <li class="page-item"> <a href="@link?page=@ViewBag.First" title="Trang đầu" class="page-link"><i class="fa fa-angle-double-left"></i></a></li>
+                                        <li class="page-item">
+                                            <a href="@link?page=@ViewBag.Prev" title="Trang trước" class="page-link"><i class="fa fa-angle-left"></i></a>
+                                        </li>
+                                     }
+                                    @for (int i = startPageIndex; i <= endPageIndex; i++)
+                                    {
+                                        if (currentPage == i)
+                                        {
+
+                                            <li class="page-item active"> <a href="@link?page=@i" class="page-link" title="Trang @i">@i</a></li>
+                                        }
+                                        else
+                                        { 
+                                        <li class="page-item"><a class="page-link" href="@link?page=@i">@i</a></li>
+                                    }
+                                    }
+                                    @if (currentPage < totalPage)
+                                    {
+                                        <li class="page-item"> <a href="@link?page=@ViewBag.Next" class="page-link" title="Trang sau"><i class="fa fa-angle-right"></i></a></li>
+                                        <li class="page-item"> <a href="@link?page=@ViewBag.Last" class="page-link" title="Trang cuối"><i class="fa fa-angle-double-right"></i></a></li>
+                                    }
+
+                                </ul>
+                            </nav> }
+                        else
+                        {
+                            <span>Không có bản ghi nào</span>}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

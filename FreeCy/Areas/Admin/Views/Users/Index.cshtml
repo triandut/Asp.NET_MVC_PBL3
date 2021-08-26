@@ -1,0 +1,130 @@
+﻿
+@{ ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var listUsers = (List<Models.Framework.User>)ViewBag.Userss; }
+
+<div class="col-12 mt-3">
+    <div class="custom-form p-4 border rounded">
+        @*<img src=""
+            class="img-fluid avatar avatar-medium d-block mx-auto rounded-pill" alt="">*@
+        <form class="text-success mb-0 rounded">
+            <h3 class="text-center">LIST USER</h3>
+        </form>
+        <form>
+            <table class="table">
+                <tr>
+                    <th>
+                        @*@Html.DisplayNameFor(model => model.UserName)*@Tên
+                    </th>
+                    <th>
+                        @*@Html.DisplayNameFor(model => model.Email)*@Mail
+                    </th>
+                    <th>
+                        @*@Html.DisplayNameFor(model => model.Status)*@Status
+                    </th>
+                    <th>
+                        @*@Html.DisplayNameFor(model => model.isFreeLancer)*@FreeLancer
+                    </th>
+                    <th>
+                        @*@Html.DisplayNameFor(model => model.isEmployer)*@Employer
+                    </th>
+                    <th>
+                        @*@Html.DisplayNameFor(model => model.Address)*@Address
+                    </th>
+                    <th>
+                        @*@Html.DisplayNameFor(model => model.CreateAt)*@CreateAt
+                    </th>
+                    <th></th>
+                </tr>
+
+                <!-- Job List Start -->
+                @foreach (var item in listUsers)
+                {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.isFreeLancer)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.isEmployer)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreateAt)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.ID_User }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ID_User }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ID_User })
+        </td>
+    </tr>
+}
+                <!-- Job List Start -->
+            </table>
+
+            <p>
+                @Html.ActionLink("Create New", "Create")
+            </p>
+            <!-- Job List Wrap Start -->
+            <!-- Pagination Start -->
+
+            @{var link = "/Admin/Users/Index"; }
+            @if (ViewBag.TotalPage >= 1)
+            {
+                var pageDisplay = (int)ViewBag.MaxPage;
+                int totalPage = (int)ViewBag.TotalPage;
+                int currentPage = ((int)ViewBag.Page);
+
+                // Create numeric links
+                var startPageIndex = Math.Max(1, currentPage - pageDisplay / 2);
+                var endPageIndex = Math.Min(totalPage, currentPage + pageDisplay / 2);
+
+<nav>
+    <ul class="pagination pagination-center mt-5">
+
+        @if (currentPage > ViewBag.First)
+        {
+<li class="page-item"> <a href="@link?page=@ViewBag.First" title="Trang đầu" class="page-link"><i class="fa fa-angle-double-left"></i></a></li>
+                    <li class="page-item">
+                        <a href="@link?page=@ViewBag.Prev" title="Trang trước" class="page-link"><i class="fa fa-angle-left"></i></a>
+                    </li>
+                    @*<li class="page-item"><a class="page-link" href="@link?page=2">2</a></li>*@}
+        @for (int i = startPageIndex; i <= endPageIndex; i++)
+        {
+            if (currentPage == i)
+            {
+
+<li class="page-item active"> <a href="@link?page=@i" class="page-link" title="Trang @i">@i</a></li>
+ }
+else
+{ @*<li><a href="@link?page=@i" title="Trang @i" class="pos">@i</a></li>*@
+                        <li class="page-item"><a class="page-link" href="@link?page=@i">@i</a></li>
+}
+                }
+        @if (currentPage < totalPage)
+        {
+<li class="page-item"> <a href="@link?page=@ViewBag.Next" class="page-link" title="Trang sau"><i class="fa fa-angle-right"></i></a></li>
+                    <li class="page-item"> <a href="@link?page=@ViewBag.Last" class="page-link" title="Trang cuối"><i class="fa fa-angle-double-right"></i></a></li>
+}
+
+    </ul>
+</nav> }
+else
+{
+<span>Không có bản ghi nào</span>}
+
+        </form>
+    </div>
+</div>
+
+

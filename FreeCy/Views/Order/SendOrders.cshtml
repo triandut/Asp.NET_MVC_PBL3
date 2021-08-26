@@ -1,0 +1,106 @@
+﻿@model IEnumerable<Models.Framework.Order>
+
+@{ ViewBag.Title = "SendOrders";
+    Layout = "~/Views/Shared/_Layout2.cshtml"; }
+
+<section class="bg-half page-next-level">
+
+    <div class="bg-overlay" style="        background: url('') center center;
+        background-image: url('../../assets2/images/login-bg.png');
+"></div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="text-center text-white">
+                    <h4 class="text-uppercase title mb-4">Job List view</h4>
+                    <ul class="page-next d-inline-block mb-0">
+                        <li>
+                            <a href="/Home/Index" class="text-uppercase font-weight-bold">Home</a>
+                        </li>
+                        
+                        <li>
+                            <span class="text-uppercase text-white font-weight-bold">Send Oders</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end home -->
+<div class="col-12 mt-3">
+    <div class="custom-form p-4 border rounded">
+        @*<img src=""
+            class="img-fluid avatar avatar-medium d-block mx-auto rounded-pill" alt="">*@
+        <form class="text-success mb-0 rounded">
+            <h4 class="text-center">SEND ORDER LIST</h4>
+        </form>
+        <form class="text-success mb-0 rounded">
+            @if (Model != null)
+            {
+<table class="table">
+    <tr>
+        <th>
+            <h5 class="text-muted">Job Name</h5>
+        </th>
+        <th>
+            <h5 class="text-muted">Quantity</h5>
+        </th>
+        <th>
+            <h5 class="text-muted">Price</h5>
+        </th>
+        <th>
+            @*<h5 class="text-muted">Description</h5>*@
+        </th>
+        <th>
+            <h5 class="text-muted">Creation Start Time</h5>
+        </th>
+        <th>
+            <h5 class="text-muted">Is Finish</h5>
+        </th>
+        <th>
+            <h5 class="text-muted">Action</h5>
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Product.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Quantity)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Price)
+    </td>
+    <td>
+        @Html.HiddenFor(modelItem => item.Description)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CreatedAt)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.isFinish)
+
+    </td>
+    @*<th>
+            <h5 class="text-uppercase title mb-4">Is Finish</h5>
+        </th>*@
+    <td>
+
+        @Html.ActionLink("Chi tiết", "Detail", new { order_id = item.ID_Order })
+
+    </td>
+    
+</tr>}
+
+</table> }
+else
+{
+<div><h3>Chưa có order nào!</h3></div>}
+        </form>
+    </div>
+</div>
+

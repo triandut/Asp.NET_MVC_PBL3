@@ -1,0 +1,144 @@
+﻿@model Models.Framework.User
+
+@{ ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml"; }
+
+<div class="col-12 mt-3">
+    <div class="custom-form p-4 border rounded">
+        @*<img src=""
+        class="img-fluid avatar avatar-medium d-block mx-auto rounded-pill" alt="">*@
+        <form class="text-success mb-0 rounded">
+            <h3 class="text-center">ARE YOU SURE YOU WANT TO DELETE THIS ?</h3>
+        </form>
+        <form>
+            <div>
+
+                <hr />
+                <dl class="dl-horizontal">
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.UserName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.UserName)
+                    </dd>
+
+                    <dt>
+                        @*@Html.DisplayNameFor(model => model.Password)*@
+                    </dt>
+
+                    <dd>
+                        @Html.HiddenFor(model => model.Password)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Email)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Email)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Phone)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Phone)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Birthday)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Birthday)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Status)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Status)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.isFreeLancer)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.isFreeLancer)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.isEmployer)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.isEmployer)
+                    </dd>
+
+                    <dt>
+                        @*@Html.DisplayNameFor(model => model.ResetPasswordCode)*@
+                    </dt>
+
+                    <dd>
+                        @Html.HiddenFor(model => model.ResetPasswordCode)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.isEmailVerify)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.isEmailVerify)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Address)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Address)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.WorkTime)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.WorkTime)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.CreateAt)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.CreateAt)
+                    </dd>
+
+                </dl>
+
+
+                @*<div class="col-lg-12 mt-2">
+                    @Html.ActionLink("Back to List", "Index")
+                </div>*@
+            </div>
+        </form>
+        <div class="text-success mb-0 rounded">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+            <div class="col-lg-12 mt-2">
+                <button type="submit" class="btn btn-primary">Delete</button> | 
+                @Html.ActionLink("Back to List", "Index")
+
+            </div>}
+           
+        </div>
+    </div>
+</div>
+

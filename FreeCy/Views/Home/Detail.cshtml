@@ -1,0 +1,239 @@
+﻿
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+@model Models.Framework.Product
+@if (null != TempData["alertMessage"])
+{
+    <script type="text/javascript">
+       alert("@TempData["alertMessage"]");
+    </script>
+}
+<!-- Start home -->
+<section class="bg-half page-next-level">
+    <div class="bg-overlay" style="        background: url('');
+        background-image: url('../../assets2/images/job-detail.png');
+"></div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="text-center text-white">
+                    <h4 class="text-uppercase title mb-4">Job Detail</h4>
+                    <ul class="page-next d-inline-block mb-0">
+                        <li><a href="/Home/Index" class="text-uppercase font-weight-bold">Home</a></li>
+                        <li><a href="/Home/ListProduct" class="text-uppercase font-weight-bold">Jobs</a></li>
+                        <li>
+                            <span class="text-uppercase text-white font-weight-bold">Job Detail</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end home -->
+<!-- JOB DETAILS START -->
+<section class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h4 class="text-dark mb-3">@Model.Name</h4>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-8 col-md-7">
+                <div class="job-detail border rounded p-4">
+                    <div class="job-detail-content">
+                        <img src="~/assets2/images/featured-job/@Model.Image" alt=""
+                             class="img-fluid float-left mr-md-3 mr-2 mx-auto d-block">
+                        <div class="job-detail-com-desc overflow-hidden d-block">
+                            <h4 class="mb-2"><a href="#" class="text-dark">@Model.Name</a></h4>
+                            <p class="text-muted mb-0">
+                                <a href="/User/ViewProfileCandidate/@Model.ID_User" class="mdi mdi-link-variant mr-2">@Model.User.UserName</a>
+                            </p>
+                            <p class="text-muted mb-0">
+                                <i class="mdi mdi-map-marker mr-2"></i>@Model.User.Address
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="job-detail-desc mt-4">
+                        <p class="text-muted mb-3">
+                            @Model.User.Introduce
+                        </p>
+
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h5 class="text-dark mt-4">Job Description :</h5>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="job-detail border rounded mt-2 p-4">
+                            <div class="job-detail-desc">
+                                <p class="text-muted mb-3">
+                                    @Model.Description
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h5 class="text-dark mt-4">Primary Responsibilities :</h5>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="job-detail border rounded mt-2 p-4">
+                            <div class="job-detail-desc">
+                                <div class="job-details-desc-item">
+                                    <div class="float-left mr-3">
+                                        <i class="mdi mdi-send text-primary"></i>
+                                    </div>
+                                    <p class="text-muted mb-2">HTML, CSS & Scss</p>
+                                </div>
+
+                                <div class="job-details-desc-item">
+                                    <div class="float-left mr-3">
+                                        <i class="mdi mdi-send text-primary"></i>
+                                    </div>
+                                    <p class="text-muted mb-2">Javascript</p>
+                                </div>
+
+                                <div class="job-details-desc-item">
+                                    <div class="float-left mr-3">
+                                        <i class="mdi mdi-send text-primary"></i>
+                                    </div>
+                                    <p class="text-muted mb-2">PHP</p>
+                                </div>
+
+                                <div class="job-details-desc-item">
+                                    <div class="float-left mr-3">
+                                        <i class="mdi mdi-send text-primary"></i>
+                                    </div>
+                                    <p class="text-muted mb-2">Photoshop</p>
+                                </div>
+
+                                <div class="job-details-desc-item">
+                                    <div class="float-left mr-3">
+                                        <i class="mdi mdi-send text-primary"></i>
+                                    </div>
+                                    <p class="text-muted mb-0">Illustrator</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-5 mt-4 mt-sm-0">
+                <div class="job-detail border rounded p-4">
+                    <h5 class="text-muted text-center pb-2"><i class="mdi mdi-map-marker mr-2"></i>Location</h5>
+
+                    <div class="job-detail-location pt-4 border-top">
+                        <div class="job-details-desc-item">
+                            <div class="float-left mr-2">
+                                <i class="mdi mdi-bank text-muted"></i>
+                            </div>
+                            <p class="text-muted mb-2">: @Model.User.UserName</p>
+                        </div>
+
+                        <div class="job-details-desc-item">
+                            <div class="float-left mr-2">
+                                <i class="mdi mdi-email text-muted"></i>
+                            </div>
+                            <p class="text-muted mb-2">: @Model.User.Email</p>
+                        </div>
+
+                        <div class="job-details-desc-item">
+                            <div class="float-left mr-2">
+                                <i class="mdi mdi-web text-muted"></i>
+                            </div>
+                            <p class="text-muted mb-2">: https://www.WebThemes.com</p>
+                        </div>
+
+                        <div class="job-details-desc-item">
+                            <div class="float-left mr-2">
+                                <i class="mdi mdi-cellphone-iphone text-muted"></i>
+                            </div>
+                            <p class="text-muted mb-2">:+@Model.User.Phone</p>
+                        </div>
+
+                        <div class="job-details-desc-item">
+                            <div class="float-left mr-2">
+                                <i class="mdi mdi-currency-usd text-muted"></i>
+                            </div>
+                            <p class="text-muted mb-2">: $@Model.Price/month</p>
+                        </div>
+
+                        <div class="job-details-desc-item">
+                            <div class="float-left mr-2">
+                                <i class="mdi mdi-security text-muted"></i>
+                            </div>
+                            <p class="text-muted mb-2">: @Model.User.Exper.</p>
+                        </div>
+
+                        <div class="job-details-desc-item">
+                            <div class="float-left mr-2">
+                                <i class="mdi mdi-clock-outline text-muted"></i>
+                            </div>
+                            <p class="text-muted mb-2">: @Model.CreatedAt</p>
+                        </div>
+
+                        <h6 class="text-dark f-17 mt-3 mb-0">Share Job :</h6>
+                        <ul class="social-icon list-inline mt-3 mb-0">
+                            <li class="list-inline-item">
+                                <a href="#" class="rounded">
+                                    <i class="mdi mdi-facebook"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#" class="rounded">
+                                    <i class="mdi mdi-twitter"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#" class="rounded">
+                                    <i class="mdi mdi-google-plus"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#" class="rounded">
+                                    <i class="mdi mdi-whatsapp"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#" class="rounded">
+                                    <i class="mdi mdi-linkedin"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+
+                <div class="job-detail border rounded mt-4">
+                    <a href="/Chat/Details/@Model.User.ID_User" class="btn btn-primary btn-block">Contact Seller</a>
+                </div>
+                <div class="job-detail border rounded mt-4">
+                    <a href="/Cart/AddItem/@Model.ID_Product" class="btn btn-primary btn-block">Order</a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</section>
+<!-- JOB DETAILS END -->

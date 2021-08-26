@@ -1,0 +1,102 @@
+﻿@model Models.Framework.Product
+
+@{ ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout2.cshtml"; }
+<!-- Start home -->
+<section class="bg-half page-next-level">
+    <div class="bg-overlay" style="        background: url('') center center;
+        background-image: url('../../assets2/images/login-bg.png');
+"></div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="text-center text-white">
+                    <h4 class="text-uppercase title mb-4">Your Product View</h4>
+                    <ul class="page-next d-inline-block mb-0">
+                        <li>
+                            <a href="/Home/Index" class="text-uppercase font-weight-bold">Home</a>
+                        </li>
+
+                        <li>
+                            <span class="text-uppercase text-white font-weight-bold">Delete Product</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end home -->
+<div class="col-12 mt-3">
+    <div class="custom-form p-4 border rounded">
+        @*<img src=""
+            class="img-fluid avatar avatar-medium d-block mx-auto rounded-pill" alt="">*@
+        <form class="text-success mb-0 rounded">
+            <h4 class="text-center">ARE YOU SURE WANT TO DELETE THIS ?</h4>
+        </form>
+      
+            <section class="section">
+
+                @*<div class="row">
+                        <div class="col-lg-12">
+                            <h4 class="text-dark mb-3">Are you sure you want to delete this?</h4>
+                        </div>
+                    </div>*@
+
+
+                <div class="job-list-box border rounded">
+                    <div class="p-3">
+                        <div class="row align-items-center">
+                            <div class="col-lg-2">
+                                <div class="company-logo-img">
+                                    <img src="~/assets2/images/featured-job/@Model.Image" alt=""
+                                         class="img-fluid mx-auto d-block" />
+                                </div>
+                            </div>
+                            <div class="col-lg-7 col-md-9">
+                                <div class="job-list-desc">
+                                    <h6 class="mb-2">
+                                        <a href="/Product/Details/@Model.ID_Product" class="text-dark">
+                                            @Model.Name
+                                        </a>
+                                    </h6>
+                                    <p class="text-muted mb-0">
+                                        <i class="mdi mdi-bank mr-2"></i>@Model.Category.Name
+                                    </p>
+                                    <ul class="list-inline mb-0">
+                                        <li class="list-inline-item mr-3">
+                                            <p class="text-muted mb-0">
+                                                <i class="mdi mdi-map-marker mr-2"></i>Confederate Drive
+                                                Potsdam, NY 13676
+                                            </p>
+                                        </li>
+
+                                        <li class="list-inline-item">
+                                            <p class="text-muted mb-0">
+                                                <i class="mdi mdi-clock-outline mr-2"></i>@(-(DateTime.Now.Day - Model.CreatedAt.Value.Day)) Ngày trước
+                                            </p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                @using (Html.BeginForm())
+                {
+                     @Html.AntiForgeryToken()
+
+                    <div class="form-actions no-color">
+                        <button type="submit" class="btn btn-primary">Delete</button>
+
+                    </div>
+                                    @Html.ActionLink("Back to List", "Index", new { type = "button", @class = "btn btn-secondary" })}
+
+
+            </section>
+   
+    </div>
+</div>
+

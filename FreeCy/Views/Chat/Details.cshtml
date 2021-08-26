@@ -1,0 +1,125 @@
+﻿
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+    var idd = ViewBag.idus;
+}
+@if (null != TempData["alertMessage"])
+{
+    <script type="text/javascript">
+       alert("@TempData["alertMessage"]");
+    </script>
+}
+<!-- Start home -->
+<section class="bg-half page-next-level">
+    <div class="bg-overlay" style="        background: url('');
+        background-image: url('../../assets2/images/job-detail.png');
+"></div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="text-center text-white">
+                    <h4 class="text-uppercase title mb-4">Job Detail</h4>
+                    <ul class="page-next d-inline-block mb-0">
+                        <li><a href="index.html" class="text-uppercase font-weight-bold">Home</a></li>
+                        <li><a href="job-list.html" class="text-uppercase font-weight-bold">Jobs</a></li>
+                        <li><a href="job-details.html" class="text-uppercase font-weight-bold">Jobs Detail</a></li>
+
+                        <li>
+                            <span class="text-uppercase text-white font-weight-bold">Job Contact</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end home -->
+@*@foreach (var i in ViewBag.ListMess)
+    {
+        <p>@i.UpdateTime</p>
+    }*@
+<!-- JOB DETAILS START -->
+<section class="section">
+    <div class="container">
+        <div class="page-content page-container" id="page-content">
+            <div class="">
+                <div class="">
+                    <div class="col-12">
+                        <div class="card card-bordered">
+                            <div class="card-header">
+                                <h4 class="card-title"><strong>@ViewBag.Name</strong></h4>
+                            </div>
+                            <div class="ps-container ps-theme-default ps-active-y" id="chat-content"
+                                 style="overflow-y: scroll !important; height:400px !important;">
+
+                                @foreach (var item in Model)
+                                {
+                                    if (item.ID_User != idd)
+                                    {
+                                        <div class="media media-chat media-chat-reverse">
+                                            <div class="media-body">
+                                                <p>@item.Contents</p>
+                                                <p class="meta"><time>@item.CreatedAt</time></p>
+                                            </div>
+                                        </div> }
+
+                                    else
+                                    {
+                                        <div class="media media-chat">
+                                            <img class="avatar"
+                                                 src="https://img.icons8.com/color/36/000000/administrator-male.png"
+                                                 alt="...">
+                                            <div class="media-body">
+                                                <p>@item.Contents</p>
+
+                                                <p class="meta"><time>@item.CreatedAt</time></p>
+                                            </div>
+                                        </div>}
+
+
+                                }
+
+
+                                <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;">
+                                    <div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+                                </div>
+                                <div class="ps-scrollbar-y-rail" style="top: 0px; height: 0px; right: 2px;">
+                                    <div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 2px;"></div>
+                                </div>
+                            </div>
+
+                            @using (Html.BeginForm("PostMessage", "Chat", FormMethod.Post))
+                            {
+                                <div class="publisher bt-1 border-light">
+                                    <img class="avatar avatar-xs"
+                                         src="https://img.icons8.com/color/36/000000/administrator-male.png" alt="...">
+                                    <input class="publisher-input" type="text" name="Contents" placeholder="Write something">
+
+                         
+
+                                    <input type="submit" value="Send" class="btn btn-success" />
+                                    <input type="hidden" name="ID_MessRoom" value="@ViewBag.IdRoom" />
+                                    <input type="hidden" name="Iduser" value="@ViewBag.idus" />
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--<script src="~/assets2/js/jquery.min.js"></script>
+<script src="~/assets2/js/bootstrap.bundle.min.js"></script>
+<script src="~/assets2/js/jquery.easing.min.js"></script>
+<script src="~/assets2/js/plugins.js"></script>-->
+<!-- selectize js -->
+<!--<script src="~/assets2/js/selectize.min.js"></script>
+<script src="~/assets2/js/jquery.nice-select.min.js"></script>
+
+<script src="~/assets2/js/app.js"></script>-->
+<Script>
+    var objDiv = document.getElementById("chat-content");
+    objDiv.scrollTop = objDiv.scrollHeight;</Script>
+<!-- JOB DETAILS END -->

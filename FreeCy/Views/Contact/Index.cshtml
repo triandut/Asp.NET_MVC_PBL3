@@ -1,0 +1,107 @@
+﻿@model Models.Framework.Contact
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_Layoutt.cshtml";
+}
+
+<!-- Page Heading Section Start -->
+@*<style>
+        #mapCanvas {
+            height: 600px;
+        }
+    </style>*@
+@section jsFooter{
+
+    <script src="/assets/js/controller/contactController.js"></script>
+    <script>
+
+        // This example displays a marker at the center of Australia.
+        // When the user clicks the marker, an info window opens.
+        //21.046300, 105.793266
+        function initMap() {
+            var uluru = { lat: 21.046300, lng: 105.793266 };
+            var map = new google.maps.Map(document.getElementById('mapCanvas'), {
+                zoom: 18,
+                center: uluru
+            });
+            var contentString = '@Html.Raw(Model.Content)';
+            var infowindow = new google.maps.InfoWindow({
+                content: contentString
+            });
+            var marker = new google.maps.Marker({
+                position: uluru,
+                map: map,
+                title: 'Địa chỉ'
+            });
+            marker.addListener('click', function () {
+                infowindow.open(map, marker);
+            });
+        }
+        google.maps.event.addDomListener(window, 'load', initMap);
+    </script>
+
+}
+
+<div class="page-heading-section section bg-parallax" data-bg-image="/assets/images/bg/bg-1.jpg" data-overlay="50">
+    <div class="container">
+        <div class="page-heading-content text-center">
+            <h3 class="title">Contact Us</h3>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/Home/Index">Home</a></li>
+                <li class="breadcrumb-item active">Contact Us</li>
+            </ol>
+        </div>
+    </div>
+</div>
+<!-- Page Heading Section End -->
+<!-- Contact Section Start -->
+<div class="section section-padding">
+    <div class="container">
+        <div class="row mb-n5">
+
+            <!-- Contact Map Start -->
+            
+            <!-- Contact Map End -->
+            <!-- Contact Information Start -->
+            <div class="col-lg-5 col-12 mb-5">
+                <div class="contact-information">
+                    <h5 class="title mb-4">Contact Information</h5>
+                    <ul>
+                        <li><i class="fa fa-map-o"></i><span>Viet Nam</span></li>
+                        <li><i class="fa fa-phone-square"></i><span>+085 3107632</span></li>
+                        <li><i class="fa fa-fax"></i><span>+084 6587911</span></li>
+                        <li><i class="fa fa-envelope-o"></i><span>freecy@gmail.com.com</span></li>
+                    </ul>
+                    <div class="contact-social">
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-linkedin"></i></a>
+                        <a href="#"><i class="fa fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- Contact Information End -->
+            <!-- Contact Form Start -->
+            <div class="col-lg-7 col-12 mb-5">
+                <div class="contact-form">
+                    <h5 class="title mb-4">Get in Touch</h5>
+                   
+                    <form id="contact-form" action="~/assets/php/contact-mail.php" method="post">
+                        <div class="row mb-n3">
+                            <div class="col-md-6 col-12 mb-3"><input type="text" id="txtName" placeholder="Your Name"></div>
+                            <div class="col-md-6 col-12 mb-3"><input type="email" id="txtEmail" placeholder="Email Address"></div>
+                            <div class="col-md-6 col-12 mb-3"><input type="text" id="txtMobile" placeholder="Your Phone"></div>
+                            <div class="col-md-6 col-12 mb-3"><input type="text" id="txtAddress" placeholder="Your Address"></div>
+                            <div class="col-12 mb-3"><textarea id="txtContent" placeholder="Your Message" rows="4"></textarea></div>
+                            <div class="col-12 mb-3"><input class="btn btn-primary px-5" type="submit" id="btnSend" value="Send Message"></div>
+                            @*<button id="btnSend" class="btn btn-success">Gửi đi</button>*@
+                        </div>
+                    </form>
+                    
+                </div>
+            </div>
+            <!-- Contact Form End -->
+        </div>
+    </div>
+</div>
+<!-- Contact Section End -->

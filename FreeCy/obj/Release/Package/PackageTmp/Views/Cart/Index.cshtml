@@ -1,0 +1,144 @@
+﻿@using Models.Framework
+@{ ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout2.cshtml"; }
+@{ CartItem item = (CartItem)ViewBag.CartItem; }
+<section class="bg-half page-next-level">
+    <div class="bg-overlay" style="        background: url('');
+        background-image: url('../../assets2/images/job-detail.png');
+"></div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="text-center text-white">
+                    <h4 class="text-uppercase title mb-4">Job Detail</h4>
+                    <ul class="page-next d-inline-block mb-0">
+                        <li><a href="/Home/Index" class="text-uppercase font-weight-bold">Home</a></li>
+                        <li><a href="/Home/ListProduct" class="text-uppercase font-weight-bold">Jobs</a></li>
+                        <li>
+                            <span class="text-uppercase text-white font-weight-bold">Job Order</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@*<div>
+        <a href="/Product/Detail/@item.Product.ID_Product" class="job-list">
+            <div class="company-logo col-auto">
+                <img src="~/assets/images/companies/@item.Product.Image" alt="@item.Product.Name">
+            </div>
+            <div class="salary-type col-auto order-sm-3">
+                <span class="salary-range">$ @item.Product.Price</span>
+                <span class="badge badge-success">@item.Product.User.WorkTime</span>
+            </div>
+            <div class="content col">
+                <h6 class="title">@item.Product.Name</h6>
+            </div>
+        </a>
+        <div><label>Quantity: @item.Quantity.ToString()</label></div>
+        <div>Change quantity</div>
+        @Html.DropDownList("Quantity: ", new SelectListItem[] {
+        new SelectListItem() { Text = "", Value = "0", Selected = true},
+        new SelectListItem() { Text = "1", Value = "1"},
+        new SelectListItem() { Text = "2", Value = "2" },
+        new SelectListItem() { Text = "3", Value = "3" },
+        new SelectListItem() { Text = "4", Value = "4" },
+        new SelectListItem() { Text = "5", Value = "5" },
+        new SelectListItem() { Text = "6", Value = "6" },
+        new SelectListItem() { Text = "7", Value = "7" },
+        new SelectListItem() { Text = "8", Value = "8" },
+        new SelectListItem() { Text = "9", Value = "9" },
+        new SelectListItem() { Text = "10", Value = "10" },}, new { onchange = "document.location.href = '/Cart/SetQuantity/'+ this.options[this.selectedIndex].value;" })
+
+        <div><label>Price: </label>@item.Product.Price.GetValueOrDefault(0).ToString("N0")</div>
+        <div><label>Total: </label> @((item.Product.Price.GetValueOrDefault(0) * item.Quantity).ToString("N0"))</div>
+    </div>*@
+<div class="col-12 mt-3">
+    <div class="custom-form p-4 border rounded">
+        @*<img src=""
+        class="img-fluid avatar avatar-medium d-block mx-auto rounded-pill" alt="">*@
+        <form class="text-success mb-0 rounded">
+            <h4 class="text-center">ORDER JOB</h4>
+        </form>
+        <form>
+        </form>
+
+        @*<div class="col-lg-12 mt-4 pt-2">*@
+        <div class="job-list-box border rounded">
+            <div class="p-3">
+                <div class="row align-items-center">
+                    <div class="col-lg-2">
+                        <div class="company-logo-img">
+                            <img src="~/assets2/images/featured-job/@item.Product.Image" alt=""
+                                 class="img-fluid mx-auto d-block" />
+                        </div>
+                    </div>
+                    <div class="col-lg-7 col-md-9">
+                        <div class="job-list-desc">
+                            <h6 class="mb-2">
+                                <a href="#" class="text-dark">
+                                    @item.Product.Name
+                                </a>
+                            </h6>
+                            <p class="text-muted mb-0">
+                                <i class="text-muted mb-2"></i>$ @item.Product.Price
+                            </p>
+                            <ul class="list-inline mb-0">
+                                <li class="list-inline-item mr-3">
+                                    <p class="text-muted mb-0">
+                                        <i class="mdi mdi-map-marker mr-2"></i>@item.Product.User.Address
+                                    </p>
+                                </li>
+
+                                <li class="list-inline-item">
+                                    <p class="text-muted mb-0">
+                                        <i class="mdi mdi-clock-outline mr-2"></i>@item.Product.CreatedAt
+
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*</div>*@
+        <div class="form-group app-label mt-2">
+            <label class="text-muted"></label>
+            @Html.DropDownList("Quantity: ", new SelectListItem[] {
+    new SelectListItem() { Text = "", Value = "0", Selected = true},
+    new SelectListItem() { Text = "1", Value = "1"},
+    new SelectListItem() { Text = "2", Value = "2" },
+    new SelectListItem() { Text = "3", Value = "3" },
+    new SelectListItem() { Text = "4", Value = "4" },
+    new SelectListItem() { Text = "5", Value = "5" },
+    new SelectListItem() { Text = "6", Value = "6" },
+    new SelectListItem() { Text = "7", Value = "7" },
+    new SelectListItem() { Text = "8", Value = "8" },
+    new SelectListItem() { Text = "9", Value = "9" },
+    new SelectListItem() { Text = "10", Value = "10" },}, new { onchange = "document.location.href = '/Cart/SetQuantity/'+ this.options[this.selectedIndex].value;", @class = "nice-select rounded" })
+
+        </div>
+        <div><label class="text-muted">Quantity: @item.Quantity.ToString()</label></div>
+
+        @*<div class="col-md-6">*@
+
+        @*</div>*@
+        <br>
+
+        <div><label class="text-muted">   Price: </label>@item.Product.Price.GetValueOrDefault(0).ToString("N0")</div>
+
+        <br>
+
+        <div>
+            <label class="text-muted">   Total: </label> @((item.Product.Price.GetValueOrDefault(0) * item.Quantity).ToString("N0"))
+        </div>
+
+        <div>
+            @Html.ActionLink("Continue", "Order", "Cart", new { type = "submit", @class = "btn btn-primary" })
+        
+        </div>
+
+    </div>
+</div>

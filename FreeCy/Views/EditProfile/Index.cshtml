@@ -1,0 +1,160 @@
+﻿@model IEnumerable<Models.Framework.User>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GroupID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Birthday)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.isFreeLancer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.isEmployer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ResetPasswordCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Skill)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Introduce)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Educate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExpertTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SalaryUser)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.isEmailVerify)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WorkTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreateAt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ActivationCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ConfirmPassword)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Exper)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Password)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GroupID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Birthday)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.isFreeLancer)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.isEmployer)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ResetPasswordCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Skill)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Introduce)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Educate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExpertTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SalaryUser)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.isEmailVerify)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WorkTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreateAt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ActivationCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ConfirmPassword)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Exper)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_User }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_User }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_User })
+        </td>
+    </tr>
+}
+
+</table>
